@@ -72,9 +72,10 @@ class Student
 
     results = []
     count = 0
-    while count < number
-      DB[:conn].execute(sql).map do |row|
+    DB[:conn].execute(sql).map do |row|
+      while count < number
         results << Student.find_by_name(row[1])
+        count += 1
       end
     end
     results
