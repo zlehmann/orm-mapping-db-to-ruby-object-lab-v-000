@@ -56,8 +56,11 @@ class Student
       WHERE grade < 12
     SQL
 
-    DB[:conn].execute(sql)
-    binding.pry
+    results = []
+    DB[:conn].execute(sql).map do |row|
+      results << row
+    end
+    results
   end
 
   def save
