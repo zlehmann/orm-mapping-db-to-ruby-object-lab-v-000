@@ -105,8 +105,8 @@ class Student
     results = []
     DB[:conn].execute(sql, grade).map do |row|
       results << Student.find_by_name(row[1])
-    end 
-    results 
+    end
+    results
   end
 
   def save
