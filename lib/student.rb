@@ -68,7 +68,7 @@ class Student
       SELECT *
       FROM students
       WHERE grade = 10
-    SQL 
+    SQL
 
     results = []
     count = 0
@@ -79,7 +79,7 @@ class Student
     end
     results
   end
-      
+
 
   def save
     sql = <<-SQL
