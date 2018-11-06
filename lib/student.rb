@@ -100,9 +100,14 @@ class Student
       SELECT *
       FROM students
       WHERE grade = ?
-    SQL 
+    SQL
 
-    
+    results = []
+    DB[:conn].execute(sql, grade).map do |row|
+      results << Student.find_by_name(row[1])
+    end 
+    results 
+  end
 
   def save
     sql = <<-SQL
