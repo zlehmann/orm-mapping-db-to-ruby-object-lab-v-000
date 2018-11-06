@@ -63,6 +63,24 @@ class Student
     results
   end
 
+  def self.first_X_students_in_grade_10(number)
+    sql = <<-SQL
+      SELECT *
+      FROM students
+      WHERE grade = 10
+    SQL 
+
+    results = []
+    count = 0
+    while count < number
+      DB[:conn].execute(sql).map do |row|
+        results << Student.find_by_name(row[1])
+      end
+    end
+    results
+  end
+      
+
   def save
     sql = <<-SQL
       INSERT INTO students (name, grade)
